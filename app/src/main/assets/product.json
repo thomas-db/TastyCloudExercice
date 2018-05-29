@@ -1,0 +1,73 @@
+{
+  "product": [
+    {
+      "type": "Boisson",
+      "description": "Une boisson est un liquide destiné à la consommation. On trouve des boissons froides ou chaudes, gazeuses, alcoolisées ou non alcoolisées.",
+      "icon": "",
+      "onlist": [
+        {
+          "id": 1,
+          "name": "Coca cola",
+          "description": "Boisson gazeuse sucrée (soda) de type cola",
+          "price": 1.50,
+          "amount": 15
+        },
+        {
+          "id": 2,
+          "name": "Perrier",
+          "description": "Eau pétillante",
+          "price": 1.10,
+          "amount": 22
+        },
+        {
+          "id": 3,
+          "name": "Vin",
+          "description": "COTE-ROTIE 2016 - FRANCOIS ET FILS",
+          "price": 4.70,
+          "amount": 13
+        },
+        {
+          "id": 4,
+          "name": "Gin tonic",
+          "description": "Cocktail alcoolisé à base de gin et d'eau tonique",
+          "price": 3.22,
+          "amount": 18
+        },
+        {
+          "id": 5,
+          "name": "Schweppes",
+          "description": "Boisson",
+          "price": 1.50,
+          "amount": 30
+        }
+      ]
+    },
+    {
+      "type": "Entrées",
+      "description": "En cuisine, l'entrée est le plat qui précède le rôt (plat de résistance du repas). ",
+      "icon": "",
+      "onlist": [
+        {
+          "id": 1,
+          "name": "Salade grecque",
+          "description": "Salde composé spécifique",
+          "price": 1.50,
+          "amount": 15
+        },
+        {
+          "id": 2,
+          "name": "Œuf caviar de Neuvic vodka, citron",
+          "description": "Oeuf caviar",
+          "price": 1.10,
+          "amount": 22
+        }
+        ]
+    },
+    {
+      "type": "Plats",
+      "description": "En cuisine, l'entrée est le plat qui précède le rôt (plat de résistance du repas). ",
+      "icon": "",
+      "onlist": []
+    }
+  ]
+}
