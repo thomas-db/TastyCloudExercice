@@ -9,17 +9,21 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.RelativeLayout
 import android.widget.Toast
+import com.tasty.thomas.tastycloudexercice.MainActivity
+import com.tasty.thomas.tastycloudexercice.Model.Product
 import com.tasty.thomas.tastycloudexercice.R
 
 
 class ProductGridViewAdapter : BaseAdapter {
     var con: Context
-    var name: ArrayList<String>
+    var products: ArrayList<Product>
+    private lateinit var productType: String
     private lateinit var inflator: LayoutInflater
 
-    constructor(con: Context, name: ArrayList<String>) : super() {
+    constructor(con: Context, products: ArrayList<Product>, productType: String) : super() {
         this.con = con
-        this.name = name
+        this.products = products
+        this.productType = productType
         inflator = con.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
     }
 
@@ -30,12 +34,13 @@ class ProductGridViewAdapter : BaseAdapter {
         var rv: View
         rv=inflator.inflate(R.layout.product_layout, null)
         holder.productNameTv = rv.findViewById(R.id.productlayout_name) as TextView
-        holder.productNameTv.setText(name[position].toString())
+        holder.productNameTv.setText(products[position].name)
         holder.productImg = rv.findViewById(R.id.productlayout_image) as RelativeLayout
         holder.productImg.setBackgroundResource(R.drawable.img2)
         rv.setOnClickListener(object : View.OnClickListener{
             override fun onClick(v: View?) {
-                Toast.makeText(con, holder.productNameTv.text.toString(), Toast.LENGTH_LONG).show()
+                val mainActivity: MainActivity = con as MainActivity
+                mainActivity.openProductDescription(products[position].id, productType)
             }
 
         })
@@ -53,7 +58,7 @@ class ProductGridViewAdapter : BaseAdapter {
     }
 
     override fun getCount(): Int {
-        return name.size
+        return products.size
     }
 
     public class Holder{

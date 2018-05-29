@@ -60,6 +60,13 @@
           "description": "Oeuf caviar",
           "price": 1.10,
           "amount": 22
+        },
+        {
+          "id": 3,
+          "name": "Œuf caviar de Neuvic vodka, citron",
+          "description": "Oeuf caviar",
+          "price": 1.10,
+          "amount": 22
         }
         ]
     },

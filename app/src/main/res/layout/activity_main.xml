@@ -6,33 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
     <!--https://www.youtube.com/watch?v=uT5STJuEj5Y-->
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal">
-        <RelativeLayout
+        <include
             android:layout_width="210dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/bgmenu">
-            <LinearLayout
-                android:layout_width="wrap_content"
+            layout="@layout/menu_layout" />
+        <FrameLayout
+            android:id="@+id/main_framelayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <GridView
+                android:id="@+id/main_productGrid"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true">
-                <ListView
-                    android:id="@+id/main_menu"
-                    android:layout_width="160dp"
-                    android:layout_height="match_parent">
-                </ListView>
-            </LinearLayout>
-        </RelativeLayout>
-        <GridView
-            android:id="@+id/main_productGrid"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:horizontalSpacing="10dp"
-            android:numColumns="4"
-            android:padding="20dp"
-            android:verticalSpacing="10dp">
-        </GridView>
+                android:horizontalSpacing="10dp"
+                android:numColumns="4"
+                android:padding="20dp"
+                android:verticalSpacing="10dp">
+
+            </GridView>
+        </FrameLayout>
+
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

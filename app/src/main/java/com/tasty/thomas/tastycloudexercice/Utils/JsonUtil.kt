@@ -29,6 +29,18 @@ class JsonUtil {
             return propertyList
         }
 
+        fun findJsonObjectWhereKeyAndPropertyMatch(jsonArray: JSONArray, keyToFind: String, propertyOfKey: String): JSONObject {
+            var jsonObject: JSONObject = JSONObject()
+
+            for (i in 0 until jsonArray.length()) {
+                jsonObject = jsonArray.getJSONObject(i)
+                val property = jsonObject.get(keyToFind)
+                if (property != null && property.equals(propertyOfKey))
+                    return jsonObject
+            }
+            return jsonObject
+        }
+
         /**
          * Recupère un jsonarray pour retourner une liste d'objet contenu dans jsonarray
          */

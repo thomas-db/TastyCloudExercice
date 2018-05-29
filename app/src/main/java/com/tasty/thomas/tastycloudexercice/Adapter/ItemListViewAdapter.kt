@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import com.tasty.thomas.tastycloudexercice.MainActivity
 import com.tasty.thomas.tastycloudexercice.R
 
 class ItemListViewAdapter : BaseAdapter {
@@ -30,7 +31,8 @@ class ItemListViewAdapter : BaseAdapter {
 //        holder.productImg.setBackgroundResource(R.drawable.img2)
         rv.setOnClickListener(object : View.OnClickListener{
             override fun onClick(v: View?) {
-                Toast.makeText(con, holder.itemNameTV.text.toString(), Toast.LENGTH_LONG).show()
+                val mainActivity: MainActivity = con as MainActivity
+                mainActivity.fillProductGridView(holder.itemNameTV.text.toString())
             }
 
         })
