@@ -63,7 +63,7 @@ class MainActivity : AppCompatActivity() {
     fun openProductDescription(idProduct: String, productType: String) {
         var args = Bundle()
         args.putString("productType", productType)
-        args.putString("idProduct", idProduct)
+        args.putString("productId", idProduct)
         productDescriptionFragment!!.arguments = args
         FrameUtil.changeFrame(R.id.main_framelayout, productDescriptionFragment, supportFragmentManager.beginTransaction())
     }

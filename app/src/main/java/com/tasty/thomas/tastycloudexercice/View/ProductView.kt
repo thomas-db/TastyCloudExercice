@@ -38,7 +38,7 @@ class ProductView : Fragment() {
             val productType = dishs.optString("type")
             val productOnList = JsonUtil.jsonArrayToObjectList(dishs.getJSONArray(MainActivity.jsonKeyOnList), Product::class.java)
 
-            val productGV = thisView.findViewById(R.id.productList_gridview) as GridView
+            val productGV = thisView.findViewById<GridView>(R.id.productList_gridview)
             productGV.adapter = ProductGridViewAdapter(context!!, productOnList, productType)
         } catch (e: Exception) {
             System.err.println(e)

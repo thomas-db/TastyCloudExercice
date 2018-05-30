@@ -7,6 +7,9 @@ import org.json.JSONObject
 
 class JsonUtil {
     companion object {
+        /**
+         * jsonString to object
+         */
         fun <T> jsonToObject(jsonString: String, type: Class<T>): T? {
             try {
                 val gson = Gson()
@@ -15,6 +18,13 @@ class JsonUtil {
                 System.err.println(e)
             }
             return null
+        }
+
+        /**
+         * JSONObject to object
+         */
+        fun <T> jsonToObject(jsonString: JSONObject, type: Class<T>): T? {
+            return jsonToObject(jsonString.toString(), type)
         }
 
         /**
@@ -30,16 +40,17 @@ class JsonUtil {
             return propertyList
         }
 
+        /**
+         * Recherche le key et la property qui match pour retrourner le JSONObject correspondant
+         */
         fun findJsonObjectWhereKeyAndPropertyMatch(jsonArray: JSONArray, keyToFind: String, propertyOfKey: String): JSONObject {
-            var jsonObject: JSONObject = JSONObject()
-
             for (i in 0 until jsonArray.length()) {
-                jsonObject = jsonArray.getJSONObject(i)
-                val property = jsonObject.get(keyToFind)
+                val jsonObject = jsonArray.getJSONObject(i)
+                val property = jsonObject.getString(keyToFind)
                 if (property != null && property.equals(propertyOfKey))
                     return jsonObject
             }
-            return jsonObject
+            return JSONObject()
         }
 
         /**
