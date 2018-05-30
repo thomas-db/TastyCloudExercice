@@ -1,5 +1,6 @@
 package com.tasty.thomas.tastycloudexercice.Utils
 
+import android.content.Context
 import com.google.gson.Gson
 import org.json.JSONArray
 import org.json.JSONObject
@@ -65,6 +66,13 @@ class JsonUtil {
 //            list.add(onList.getJSONObject(i).getString("name"))
 //        }
             return null
+        }
+
+        fun loadJSONFromAsset(fileName: String, context: Context): JSONObject {
+            val fileText: String = context.applicationContext.assets.open(fileName).bufferedReader().use {
+                it.readText()
+            }
+            return JSONObject(fileText)
         }
     }
 }

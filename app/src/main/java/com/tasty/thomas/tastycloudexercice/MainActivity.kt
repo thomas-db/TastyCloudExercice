@@ -18,47 +18,54 @@ import android.R.attr.fragment
 import android.support.v4.app.Fragment
 import com.tasty.thomas.tastycloudexercice.Utils.FrameUtil
 import com.tasty.thomas.tastycloudexercice.View.ProductDescriptionView
+import com.tasty.thomas.tastycloudexercice.View.ProductView
 
 
 class MainActivity : AppCompatActivity() {
-    var context: Context = this
-    lateinit var productGv: GridView
-    lateinit var productGvAdapter: ProductGridViewAdapter
-    private var jsonKeyTypeProduct = "type"
-    private var jsonKeyProduct = "product"
-    private var jsonKeyOnList = "onlist"
     private lateinit var jsonProduct: JSONObject
+    lateinit var productFragment: Fragment
+    lateinit var productDescriptionFragment: Fragment
+
+    companion object {
+        const val jsonKeyTypeProduct = "type"
+        const val jsonKeyOnList = "onlist"
+        const val jsonKeyProduct = "product"
+        const val jsonFileName = "product.json"
+    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+         jsonProduct = JsonUtil.loadJSONFromAsset("product.json", this)
+         productFragment = ProductView.newInstance(this)
+         productDescriptionFragment = ProductDescriptionView.newInstance(this)
 
-
-
-
-
-
-
-        jsonProduct = loadJSONFromAsset("product.json")
+        val products = jsonProduct.getJSONArray(jsonKeyProduct)
+        if (products.length() > 0) {
+            val firstType = (products[0] as JSONObject).optString(jsonKeyTypeProduct)
+            openProductList(firstType)
+        }
 
         fillMainMenu()
-        fillProductGridView("Entrées")
+//        fillProductGridView("Entrées")
 
     }
 
-    fun openProductDescription(idProduct : String, productType : String) {
-        var newFragment = ProductDescriptionView.newInstance()
+    fun openProductList(productType: String) {
+        var args = Bundle()
+        args.putString("productType", productType)
+        productFragment!!.arguments = args
+        FrameUtil.changeFrame(R.id.main_framelayout, productFragment, supportFragmentManager.beginTransaction())
+    }
+
+
+    fun openProductDescription(idProduct: String, productType: String) {
         var args = Bundle()
         args.putString("productType", productType)
         args.putString("idProduct", idProduct)
-        newFragment!!.arguments = args
-        FrameUtil.changeFrame(R.id.main_framelayout, newFragment, supportFragmentManager.beginTransaction())
-//        var selectedFragment: Fragment? = null
-//        selectedFragment = ProductDescriptionView.newInstance()
-//        var ft: android.support.v4.app.FragmentTransaction? = supportFragmentManager.beginTransaction()
-//        ft!!.replace(R.id.main_framelayout, selectedFragment)
-//        ft!!.commit()
+        productDescriptionFragment!!.arguments = args
+        FrameUtil.changeFrame(R.id.main_framelayout, productDescriptionFragment, supportFragmentManager.beginTransaction())
     }
 
     fun fillMainMenu() {
@@ -66,36 +73,12 @@ class MainActivity : AppCompatActivity() {
         try {
             val products = jsonProduct.getJSONArray(jsonKeyProduct)
             val dishTypes = JsonUtil.jsonArrayToStringListPropertyByKey(products, jsonKeyTypeProduct)
-            mainMenu.adapter  =  ItemListViewAdapter(context, dishTypes)
+            mainMenu.adapter = ItemListViewAdapter(this, dishTypes)
 //            val onList = products.getJSONObject(0).getJSONArray("onlist")
 //            val productOnList = JsonUtil.jsonArrayToObjectList(onList, Drink::class.java)
 //            ItemListViewAdapter(context, productOnList)
         } catch (e: Exception) {
             System.err.println(e)
         }
-    }
-
-    fun fillProductGridView(productType: String) {
-
-        try {
-            val products = jsonProduct.getJSONArray(jsonKeyProduct)
-            val dishs = JsonUtil.findJsonObjectWhereKeyAndPropertyMatch(products, jsonKeyTypeProduct, productType)
-            val productType = dishs.optString("type")
-            val productOnList = JsonUtil.jsonArrayToObjectList(dishs.getJSONArray(jsonKeyOnList), Product::class.java)
-
-            productGv = findViewById(R.id.main_productGrid)
-            productGv.adapter = ProductGridViewAdapter(context, productOnList, productType)
-        } catch (e: Exception) {
-            System.err.println(e)
-        }
-
-
-    }
-
-    fun loadJSONFromAsset(fileName: String): JSONObject {
-        val fileText: String = applicationContext.assets.open(fileName).bufferedReader().use {
-            it.readText()
-        }
-        return JSONObject(fileText)
     }
 }

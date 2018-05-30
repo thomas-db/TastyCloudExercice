@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.*
 import com.tasty.thomas.tastycloudexercice.MainActivity
 import com.tasty.thomas.tastycloudexercice.R
+import com.tasty.thomas.tastycloudexercice.View.ProductView
 
 class ItemListViewAdapter : BaseAdapter {
     var con: Context
@@ -32,7 +33,8 @@ class ItemListViewAdapter : BaseAdapter {
         rv.setOnClickListener(object : View.OnClickListener{
             override fun onClick(v: View?) {
                 val mainActivity: MainActivity = con as MainActivity
-                mainActivity.fillProductGridView(holder.itemNameTV.text.toString())
+                (mainActivity.productFragment as ProductView).fillProductList(holder.itemNameTV.text.toString())
+                mainActivity.openProductList(holder.itemNameTV.text.toString())
             }
 
         })
