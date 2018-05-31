@@ -1,20 +1,22 @@
 package com.tasty.thomas.tastycloudexercice.Adapter
 
 import android.content.Context
+import android.media.Image
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import com.tasty.thomas.tastycloudexercice.MainActivity
+import com.tasty.thomas.tastycloudexercice.Model.ItemMenu
 import com.tasty.thomas.tastycloudexercice.R
 import com.tasty.thomas.tastycloudexercice.View.ProductView
 
 class ItemListViewAdapter : BaseAdapter {
     var con: Context
-    var items: ArrayList<String>
+    var items: ArrayList<ItemMenu>
     private lateinit var inflator: LayoutInflater
 
-    constructor(con: Context, itemList: ArrayList<String>) : super() {
+    constructor(con: Context, itemList: ArrayList<ItemMenu>) : super() {
         this.con = con
         this.items = itemList
         inflator = con.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -27,8 +29,14 @@ class ItemListViewAdapter : BaseAdapter {
         var rv: View
         rv=inflator.inflate(R.layout.itemmenu_layout, null)
         holder.itemNameTV = rv.findViewById(R.id.itemmenu_name) as TextView
-        holder.itemNameTV.setText(items[position].toString())
-//        holder.productImg = rv.findViewById(R.id.productlayout_image) as RelativeLayout
+        holder.itemNameTV.setText(items[position].type)
+        holder.itemIconIV = rv.findViewById(R.id.itemmenu_icon) as ImageView
+        holder.itemIconIV.setImageResource(con.resources.getIdentifier(items[position].icon, "drawable", con.packageName))
+        if (items.size == position + 1) {
+            holder.itemLineV = rv.findViewById(R.id.itemmenu_bottomline) as View
+            holder.itemLineV.visibility = View.INVISIBLE
+        }
+
 //        holder.productImg.setBackgroundResource(R.drawable.img2)
         rv.setOnClickListener(object : View.OnClickListener{
             override fun onClick(v: View?) {
@@ -57,7 +65,8 @@ class ItemListViewAdapter : BaseAdapter {
 
     public class Holder{
         lateinit var itemNameTV: TextView
-//        lateinit var productImg: RelativeLayout
+        lateinit var itemIconIV: ImageView
+        lateinit var itemLineV: View
     }
 
 }

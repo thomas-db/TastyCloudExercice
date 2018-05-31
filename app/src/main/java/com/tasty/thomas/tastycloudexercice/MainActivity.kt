@@ -16,6 +16,7 @@ import org.json.JSONObject
 import com.tasty.thomas.tastycloudexercice.Utils.JsonUtil
 import android.R.attr.fragment
 import android.support.v4.app.Fragment
+import com.tasty.thomas.tastycloudexercice.Model.ItemMenu
 import com.tasty.thomas.tastycloudexercice.Utils.FrameUtil
 import com.tasty.thomas.tastycloudexercice.View.ProductDescriptionView
 import com.tasty.thomas.tastycloudexercice.View.ProductView
@@ -72,7 +73,7 @@ class MainActivity : AppCompatActivity() {
         val mainMenu = findViewById(R.id.main_menu) as ListView
         try {
             val products = jsonProduct.getJSONArray(jsonKeyProduct)
-            val dishTypes = JsonUtil.jsonArrayToStringListPropertyByKey(products, jsonKeyTypeProduct)
+            val dishTypes = JsonUtil.jsonArrayToObjectList(products, ItemMenu::class.java)
             mainMenu.adapter = ItemListViewAdapter(this, dishTypes)
 //            val onList = products.getJSONObject(0).getJSONArray("onlist")
 //            val productOnList = JsonUtil.jsonArrayToObjectList(onList, Drink::class.java)

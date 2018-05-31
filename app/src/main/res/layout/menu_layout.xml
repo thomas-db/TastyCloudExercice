@@ -4,14 +4,25 @@
     android:layout_height="match_parent">
     <RelativeLayout
         android:layout_width="210dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bgmenu">
-
+        android:layout_height="wrap_content">
+        
+        <ImageView
+            android:id="@+id/background_image_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bgmenu"/>
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true">
-
+            android:layout_centerHorizontal="true"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="72dp"
+                android:layout_height="36dp"
+                android:src="@drawable/logo_white_small"
+                android:layout_gravity="center"
+                android:layout_margin="16dp"/>
             <ListView
                 android:id="@+id/main_menu"
                 android:layout_width="160dp"

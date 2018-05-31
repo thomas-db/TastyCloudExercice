@@ -7,30 +7,93 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:id="@+id/productdescription_productName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="productName" />
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="350dp">
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_columnWeight=".66">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/bgmenu"
+                    android:scaleType="center"/>
+                <TextView
+                    android:text="Pâtes au thon"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="16dp"
+                    android:textStyle="bold"
+                    android:textSize="22sp"
+                    android:textColor="#ffffff"/>
+            </RelativeLayout>
 
-        <TextView
-            android:id="@+id/productdescription_productDescription"
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_columnWeight=".33"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:background="#1e2737"
+                android:padding="16dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="22sp"
+                    android:textColor="#ffffff"
+                    android:text="5,90 €"
+                    android:gravity="right"
+                    android:layout_marginBottom="16dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textSize="18sp"
+                    android:textColor="#ffffff"
+                    android:text="Des pâtes avec du bon thon de la mère du nord, tu vas kiffer "
+                    android:layout_marginBottom="16dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:textSize="18sp"
+                    android:textColor="#ffffff"
+                    android:text="5 pièces"/>
+            </LinearLayout>
+        </GridLayout>
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="productDescription" />
-        <TextView
-            android:id="@+id/productdescription_productPrice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="productPrice" />
-        <TextView
-            android:id="@+id/productdescription_productAmount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="productAmount" />
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/productdescription_productName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="productName" />
+
+            <TextView
+                android:id="@+id/productdescription_productDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="productDescription" />
+            <TextView
+                android:id="@+id/productdescription_productPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="productPrice" />
+            <TextView
+                android:id="@+id/productdescription_productAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="productAmount" />
+        </LinearLayout>
     </LinearLayout>
+
+
 
 </android.support.constraint.ConstraintLayout>
