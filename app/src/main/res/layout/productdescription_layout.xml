@@ -3,97 +3,125 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-        <GridLayout
-            android:layout_width="match_parent"
-            android:layout_height="350dp">
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_columnWeight=".66">
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/bgmenu"
-                    android:scaleType="center"/>
-                <TextView
-                    android:text="Pâtes au thon"
-                    android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_margin="16dp"
-                    android:textStyle="bold"
-                    android:textSize="22sp"
-                    android:textColor="#ffffff"/>
-            </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_columnWeight=".33"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:background="#1e2737"
-                android:padding="16dp">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="22sp"
-                    android:textColor="#ffffff"
-                    android:text="5,90 €"
-                    android:gravity="right"
-                    android:layout_marginBottom="16dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:textSize="18sp"
-                    android:textColor="#ffffff"
-                    android:text="Des pâtes avec du bon thon de la mère du nord, tu vas kiffer "
-                    android:layout_marginBottom="16dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="left"
-                    android:textSize="18sp"
-                    android:textColor="#ffffff"
-                    android:text="5 pièces"/>
-            </LinearLayout>
-        </GridLayout>
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:id="@+id/bottomLayout"
+            android:layout_width="match_parent"
+            android:layout_height="176dp"
+            android:layout_alignParentBottom="true">
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:id="@+id/productdescription_productName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="productName" />
-
-            <TextView
-                android:id="@+id/productdescription_productDescription"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="productDescription" />
-            <TextView
-                android:id="@+id/productdescription_productPrice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="productPrice" />
-            <TextView
-                android:id="@+id/productdescription_productAmount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="productAmount" />
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerview1"
+                android:scrollbars="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true" />
         </LinearLayout>
-    </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/bottomLayout"
+            android:orientation="vertical">
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_columnWeight=".66">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:tint="#c8c8c8"
+                        android:tintMode="multiply"
+                        android:src="@drawable/pate_test" />
+
+                    <TextView
+                        android:id="@+id/productdescription_productName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_margin="16dp"
+                        android:textColor="#ffffff"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_columnWeight=".33"
+                    android:background="#1e2737"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:gravity="end"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/productdescription_productPrice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#ffffff"
+                            android:textSize="22sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" €"
+                            android:textColor="#ffffff"
+                            android:textSize="22sp" />
+                    </LinearLayout>
+
+
+                    <TextView
+                        android:id="@+id/productdescription_productDescription"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:textColor="#ffffff"
+                        android:textSize="18sp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/productdescription_productAmount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:textColor="#ffffff"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" pièce(s)"
+                            android:textColor="#ffffff"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </GridLayout>
+        </LinearLayout>
+    </RelativeLayout>
 
 
 </android.support.constraint.ConstraintLayout>

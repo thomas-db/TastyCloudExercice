@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,6 +18,13 @@ import com.tasty.thomas.tastycloudexercice.R
 import com.tasty.thomas.tastycloudexercice.Utils.FrameUtil
 import com.tasty.thomas.tastycloudexercice.Utils.JsonUtil
 import org.json.JSONObject
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.DividerItemDecoration
+import com.tasty.thomas.tastycloudexercice.Adapter.RecyclerViewHorizontalProductListAdapter
+import java.nio.file.Files.size
+
+
+
 
 class ProductDescriptionView() : Fragment() {
     private lateinit var thisView: View
@@ -25,6 +33,7 @@ class ProductDescriptionView() : Fragment() {
         @SuppressLint("StaticFieldLeak")
         private lateinit var parentContext: Context
         private lateinit var jsonProduct: JSONObject
+        lateinit var horizontalProducts: ArrayList<Product>
 
         fun newInstance(context: Context): Fragment {
             this.parentContext = context
@@ -57,53 +66,25 @@ class ProductDescriptionView() : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         thisView = inflater!!.inflate(R.layout.productdescription_layout, container, false)
         fillProductDescription(arguments!!.get("productId") as String, arguments!!.get("productType") as String)
+        createHorizontalProductList()
         return thisView
     }
 
+    private fun createHorizontalProductList() {
+        val recyclerView = thisView.findViewById(R.id.recyclerview1) as RecyclerView
+        val RecyclerViewLayoutManager = LinearLayoutManager(parentContext) //aplicationcontext
+        recyclerView.setLayoutManager(RecyclerViewLayoutManager)
+        // Adding items to RecyclerView.
+        addProductsToRecyclerViewArrayList(arguments!!.get("productType") as String)
+        val RecyclerViewHorizontalAdapter = RecyclerViewHorizontalProductListAdapter(horizontalProducts)
+        val HorizontalLayout = LinearLayoutManager(parentContext, LinearLayoutManager.HORIZONTAL, false)
+        recyclerView.setLayoutManager(HorizontalLayout)
+        recyclerView.setAdapter(RecyclerViewHorizontalAdapter)
+    }
 
-//    companion object {
-//        private lateinit var context: Context
-//
-//        fun newInstance(context: Context) : Fragment {
-//            this.context = context
-//            return ProductDescriptionView()
-//        }
-//    }
-//
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//
-//    }
-//
-//    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-//        var rv: View
-//        rv = inflater.inflate(R.layout.productdescription_layout, null)
-//        val tt = rv.findViewById(R.id.productdescription_text) as TextView
-//
-//        var titi = arguments!!.get("productType") as String
-//        tt.setText(titi)
-//
-////        val fe = parentFragment as MainActivity
-////        fe.fillProductGridView("tit")
-////        val parentFrag = this.getParentFragment()
-////        parentFrag.fillProductGridView("zef")
-//        val mainActivity: MainActivity = context as MainActivity
-////        mainActivity.fillProductGridView("zef")
-//
-//
-//
-//        System.out.print(titi)
-//        titi = arguments!!.get("idProduct") as String
-//        System.out.print(titi)
-//
-//
-//
-//        val view =  inflater!!.inflate(R.layout.productdescription_layout, container, false)
-//        val tata = view.findViewById(R.id.productdescription_text) as TextView
-//        tata.setText("gros ça marche")
-//        return view
-//    }
-////    fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-////        return  inflater!!.inflate(R.layout.productdescription_layout, container, false)
-////    }
+    fun addProductsToRecyclerViewArrayList(productType: String) {
+        val products = jsonProduct.getJSONArray(MainActivity.jsonKeyProduct)
+        val dishs = JsonUtil.findJsonObjectWhereKeyAndPropertyMatch(products, MainActivity.jsonKeyTypeProduct, productType)
+        horizontalProducts = JsonUtil.jsonArrayToObjectList(dishs.optJSONArray(MainActivity.jsonKeyOnList), Product::class.java)
+    }
 }

@@ -16,6 +16,9 @@ import org.json.JSONObject
 import com.tasty.thomas.tastycloudexercice.Utils.JsonUtil
 import android.R.attr.fragment
 import android.support.v4.app.Fragment
+import android.support.v7.widget.DividerItemDecoration
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import com.tasty.thomas.tastycloudexercice.Model.ItemMenu
 import com.tasty.thomas.tastycloudexercice.Utils.FrameUtil
 import com.tasty.thomas.tastycloudexercice.View.ProductDescriptionView
@@ -26,6 +29,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var jsonProduct: JSONObject
     lateinit var productFragment: Fragment
     lateinit var productDescriptionFragment: Fragment
+
+    lateinit var Number: ArrayList<Product>
 
     companion object {
         const val jsonKeyTypeProduct = "type"
@@ -49,7 +54,37 @@ class MainActivity : AppCompatActivity() {
         }
 
         fillMainMenu()
-//        fillProductGridView("Entrées")
+
+
+
+//        val recyclerView = findViewById(R.id.recyclerview1) as RecyclerView
+//
+//        val RecyclerViewLayoutManager = LinearLayoutManager(applicationContext)
+//
+//        recyclerView.setLayoutManager(RecyclerViewLayoutManager)
+//
+//        // Adding items to RecyclerView.
+//        AddItemsToRecyclerViewArrayList()
+//
+//        val RecyclerViewHorizontalAdapter = RecyclerViewAdapter(Number)
+//
+//        val HorizontalLayout = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
+//        recyclerView.setLayoutManager(HorizontalLayout)
+//
+//        recyclerView.setAdapter(RecyclerViewHorizontalAdapter)
+
+
+
+    }
+
+    fun AddItemsToRecyclerViewArrayList() {
+        var fl = 1
+        Number = ArrayList()
+        Number.add(Product("Kiki", fl.toFloat(), "image", "zef", 12, "5"))
+        Number.add(Product("Kiki2", fl.toFloat(), "image", "zef", 12, "5"))
+        Number.add(Product("Kiki3", fl.toFloat(), "image", "zef", 12, "5"))
+        Number.add(Product("Kiki4", fl.toFloat(), "image", "zef", 12, "5"))
+
 
     }
 
