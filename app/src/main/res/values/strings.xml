@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">TastyCloudExercice</string>
+    <string name="euroSignWithSpace">&#160;€</string>
+    <string name="amountLeft">&#160;pièce(s)</string>
 </resources>

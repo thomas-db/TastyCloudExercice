@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
 
     android:layout_margin="1dp"
-    card_view:cardBackgroundColor="#FF9800"
     card_view:cardCornerRadius="0dp"
     card_view:cardElevation="7dp">
 
@@ -33,9 +32,8 @@
             android:layout_gravity="center"
             android:layout_marginBottom="3dp"
             android:layout_marginTop="3dp"
-            android:textColor="#fff"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            style="@style/ShadowText"
+            />
 
         <TextView
             android:id="@+id/horizontalproduct_productPrice"
@@ -44,9 +42,8 @@
             android:layout_gravity="center"
             android:layout_marginBottom="3dp"
             android:layout_marginTop="3dp"
-            android:textColor="#fff"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            style="@style/ShadowText"
+            />
     </LinearLayout>
 
 

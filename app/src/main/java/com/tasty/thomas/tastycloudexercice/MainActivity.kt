@@ -54,27 +54,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         fillMainMenu()
-
-
-
-//        val recyclerView = findViewById(R.id.recyclerview1) as RecyclerView
-//
-//        val RecyclerViewLayoutManager = LinearLayoutManager(applicationContext)
-//
-//        recyclerView.setLayoutManager(RecyclerViewLayoutManager)
-//
-//        // Adding items to RecyclerView.
-//        AddItemsToRecyclerViewArrayList()
-//
-//        val RecyclerViewHorizontalAdapter = RecyclerViewAdapter(Number)
-//
-//        val HorizontalLayout = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
-//        recyclerView.setLayoutManager(HorizontalLayout)
-//
-//        recyclerView.setAdapter(RecyclerViewHorizontalAdapter)
-
-
-
     }
 
     fun AddItemsToRecyclerViewArrayList() {

@@ -1,7 +1,6 @@
 package com.tasty.thomas.tastycloudexercice.Adapter
 
 import android.content.Context
-import android.media.Image
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +13,7 @@ import com.tasty.thomas.tastycloudexercice.View.ProductView
 class ItemListViewAdapter : BaseAdapter {
     var con: Context
     var items: ArrayList<ItemMenu>
-    private lateinit var inflator: LayoutInflater
+    private var inflator: LayoutInflater
 
     constructor(con: Context, itemList: ArrayList<ItemMenu>) : super() {
         this.con = con
@@ -23,8 +22,6 @@ class ItemListViewAdapter : BaseAdapter {
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-
-
         var holder: Holder = Holder()
         var rv: View
         rv=inflator.inflate(R.layout.itemmenu_layout, null)
@@ -50,20 +47,18 @@ class ItemListViewAdapter : BaseAdapter {
     }
 
     override fun getItem(position: Int): Any? {
-        return null
-        /*return letters[position]*/
+        return items[position]
     }
 
     override fun getItemId(position: Int): Long {
-        return 0
-        /*return position.toLong()*/
+        return position.toLong()
     }
 
     override fun getCount(): Int {
         return items.size
     }
 
-    public class Holder{
+    class Holder{
         lateinit var itemNameTV: TextView
         lateinit var itemIconIV: ImageView
         lateinit var itemLineV: View

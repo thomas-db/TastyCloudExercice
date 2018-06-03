@@ -10,35 +10,40 @@
           "name": "Coca cola",
           "description": "Boisson gazeuse sucrée (soda) de type cola",
           "price": 1.50,
-          "amount": 15
+          "amount": 15,
+          "image": "cocacola"
         },
         {
           "id": 2,
           "name": "Perrier",
           "description": "Eau pétillante",
           "price": 1.10,
-          "amount": 22
+          "amount": 22,
+          "image": "perrier"
         },
         {
           "id": 3,
           "name": "Vin",
           "description": "COTE-ROTIE 2016 - FRANCOIS ET FILS",
           "price": 4.70,
-          "amount": 13
+          "amount": 13,
+          "image": "vin"
         },
         {
           "id": 4,
           "name": "Gin tonic",
           "description": "Cocktail alcoolisé à base de gin et d'eau tonique",
           "price": 3.22,
-          "amount": 18
+          "amount": 18,
+          "image": "gintonic"
         },
         {
           "id": 5,
           "name": "Schweppes",
           "description": "Boisson",
           "price": 1.50,
-          "amount": 30
+          "amount": 30,
+          "image": "schweppes"
         }
       ]
     },
@@ -51,30 +56,42 @@
           "id": 1,
           "name": "Salade grecque",
           "description": "Salde composé spécifique",
-          "price": 1.50,
-          "amount": 15
+          "price": 12.50,
+          "amount": 15,
+          "image": "saladegrecque"
         },
         {
           "id": 2,
           "name": "Œuf caviar de Neuvic vodka, citron",
           "description": "Oeuf caviar",
-          "price": 1.10,
-          "amount": 22
-        },
-        {
-          "id": 3,
-          "name": "Œuf caviar de Neuvic vodka, citron",
-          "description": "Oeuf caviar",
-          "price": 1.10,
-          "amount": 22
+          "price": 16.10,
+          "amount": 22,
+          "image": "oeufcaviar"
         }
-        ]
+      ]
     },
     {
       "type": "Plats",
       "description": "En cuisine, l'entrée est le plat qui précède le rôt (plat de résistance du repas). ",
       "icon": "dish_icon",
-      "onlist": []
+      "onlist": [
+        {
+          "id": 1,
+          "name": "Tartiflette",
+          "description": "Gratin de pommes de terre et d'oignons sur lequel on fait fondre du reblochon",
+          "price": 15.50,
+          "amount": 15,
+          "image": "tartiflette"
+        },
+        {
+          "id": 2,
+          "name": "Coq au vin",
+          "description": "Recette de cuisine emblématique de la cuisine française, à base de coq braisé dans une marinade de vin rouge, lardons, et champignons.",
+          "price": 16,
+          "amount": 22,
+          "image": "coqauvin"
+        }
+      ]
     }
   ]
 }

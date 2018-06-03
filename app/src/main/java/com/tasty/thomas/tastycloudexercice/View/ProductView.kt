@@ -31,6 +31,9 @@ class ProductView : Fragment() {
         }
     }
 
+    /**
+     * Fill the list of the product type given in param
+     */
     fun fillProductList(productType: String) {
         try {
             val products = jsonProduct.getJSONArray(MainActivity.jsonKeyProduct)
@@ -39,7 +42,7 @@ class ProductView : Fragment() {
             val productOnList = JsonUtil.jsonArrayToObjectList(dishs.getJSONArray(MainActivity.jsonKeyOnList), Product::class.java)
 
             val productGV = thisView.findViewById<GridView>(R.id.productList_gridview)
-            productGV.adapter = ProductGridViewAdapter(context!!, productOnList, productType)
+            productGV.adapter = ProductGridViewAdapter(parentContext, productOnList, productType)
         } catch (e: Exception) {
             System.err.println(e)
         }
